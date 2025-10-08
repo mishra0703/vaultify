@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect } from "react";
+import Image from "next/image";
 
 const Page = () => {
   useEffect(() => {
@@ -9,7 +10,7 @@ const Page = () => {
 
   return (
     <div className="flex flex-col items-center w-full h-[90vh]">
-      <img
+      <Image
         src="/under-construction.png"
         alt="Under Construction"
         className="w-auto h-100"
