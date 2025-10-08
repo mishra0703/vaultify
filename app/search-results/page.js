@@ -1,11 +1,11 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useEffect, useState , Suspense} from "react";
 import { useSearchParams, useRouter } from "next/navigation";
 import DataTable from "@/components/DataTable";
 import { motion } from "framer-motion";
 
-export default function Page() {
+ function SearchResults() {
   const searchParams = useSearchParams();
   const router = useRouter();
   const query = searchParams.get("query")?.trim().toLowerCase() || "";
@@ -90,3 +90,17 @@ export default function Page() {
     </div>
   );
 }
+
+
+
+const Page = () => {
+  return (
+    <Suspense>
+      <SearchResults />
+    </Suspense>
+  );
+};
+
+
+
+export default Page;
