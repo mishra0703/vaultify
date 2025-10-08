@@ -1,103 +1,93 @@
-import Image from "next/image";
+'use client'
 
-export default function Home() {
+import Link from "next/link";
+import { useSession } from "next-auth/react";
+
+const features = [
+  {
+    title: "Strong Password Generator",
+    desc: `Create complex, secure passwords instantly — because '1234' doesn't cut it anymore.`,
+  },
+  {
+    title: "Add Notes for Context",
+    desc: `Attach optional notes to remember account details, recovery hints, or usage info.`,
+  },
+  {
+    title: "Smart Search",
+    desc: `Find what you need in seconds, even in a mountain of saved credentials.`,
+  },
+  {
+    title: "View, Edit & Delete Effortlessly",
+    desc: `Your vault, your control. Manage your entries with one clean interface.`,
+  },
+  {
+    title: "Client-Side Encryption",
+    desc: `Your data never leaves your browser unencrypted. Even Vaultify can't peek.`,
+  },
+  {
+    title: "Simple Authentication",
+    desc: `A secure yet minimal login system that gets you inside — not in your way.`,
+  },
+];
+
+export default function Page() {
+
+  const {data: session} = useSession();
+  
   return (
-    <div className="font-sans grid grid-rows-[20px_1fr_20px] items-center justify-items-center min-h-screen p-8 pb-20 gap-16 sm:p-20">
-      <main className="flex flex-col gap-[32px] row-start-2 items-center sm:items-start">
-        <Image
-          className="dark:invert"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={180}
-          height={38}
-          priority
-        />
-        <ol className="font-mono list-inside list-decimal text-sm/6 text-center sm:text-left">
-          <li className="mb-2 tracking-[-.01em]">
-            Get started by editing{" "}
-            <code className="bg-black/[.05] dark:bg-white/[.06] font-mono font-semibold px-1 py-0.5 rounded">
-              app/page.js
-            </code>
-            .
-          </li>
-          <li className="tracking-[-.01em]">
-            Save and see your changes instantly.
-          </li>
-        </ol>
-
-        <div className="flex gap-4 items-center flex-col sm:flex-row">
-          <a
-            className="rounded-full border border-solid border-transparent transition-colors flex items-center justify-center bg-foreground text-background gap-2 hover:bg-[#383838] dark:hover:bg-[#ccc] font-medium text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5 sm:w-auto"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className="dark:invert"
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={20}
-              height={20}
-            />
-            Deploy now
-          </a>
-          <a
-            className="rounded-full border border-solid border-black/[.08] dark:border-white/[.145] transition-colors flex items-center justify-center hover:bg-[#f2f2f2] dark:hover:bg-[#1a1a1a] hover:border-transparent font-medium text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5 w-full sm:w-auto md:w-[158px]"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Read our docs
-          </a>
+    <>
+      <div className="w-full min-h-[90vh] flex flex-col items-center justify-center">
+        <div className="title text-5xl max-sm:text-3xl text-center flex flex-col font-medium">
+          <div>
+            From <span className="font-black text-[#FF756A]">Forgetful</span> to{" "}
+          </div>
+          <div>
+            <span className="font-black text-[#FF756A]">Fortified</span> in
+            seconds
+          </div>
         </div>
-      </main>
-      <footer className="row-start-3 flex gap-[24px] flex-wrap items-center justify-center">
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/file.svg"
-            alt="File icon"
-            width={16}
-            height={16}
-          />
-          Learn
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/window.svg"
-            alt="Window icon"
-            width={16}
-            height={16}
-          />
-          Examples
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/globe.svg"
-            alt="Globe icon"
-            width={16}
-            height={16}
-          />
-          Go to nextjs.org →
-        </a>
-      </footer>
-    </div>
+        <div className="sub-content poppins text-lg max-sm:text-xs max-sm:px-5 font-medium flex flex-col items-center my-8 tracking-wide">
+          <span>
+            Vaultify keeps your passwords safe, simple, and always within reach.
+          </span>
+          <span>
+            Because remembering everything shouldn't be risky — it should be
+            effortless.
+          </span>
+        </div>
+        <div className="btns my-10 flex gap-8">
+          <Link href={session ? "/password-manager" : "/register"}>
+            <button className="try-btn poppins">Try Now</button>
+          </Link>
+          <Link href={'/about'}>
+            <button className="try-btn poppins">Know More</button>
+          </Link>
+        </div>
+        <div className="features-section w-full flex justify-center gap-5">
+          {features.map((item, index) => (
+            <div
+              key={index}
+              className="group [perspective:1000px] w-1/8 h-45 font-[Segoe_UI]"
+            >
+              <div className="relative w-full h-full text-center transition-transform duration-[600ms] [transform-style:preserve-3d] group-hover:[transform:rotateY(180deg)]">
+
+                <div className="absolute w-full h-full p-2 rounded-[2em] bg-[linear-gradient(45deg,rgba(122,90,248,0.75)_0%,rgba(213,197,255,0.85)_100%)] backdrop-blur-md shadow-md inset-0 [backface-visibility:hidden]">
+                  <div className="flex items-center justify-center h-full text-2xl text-[#FF4079] text-shadow-xs font-bold poppins">
+                    {item.title}
+                  </div>
+                </div>
+
+                <div className="absolute w-full h-full p-[11px] rounded-[2em] bg-[linear-gradient(45deg,rgba(122,90,248,0.75)_0%,rgba(213,197,255,0.85)_100%)] backdrop-blur-md shadow-md inset-0 [transform:rotateY(180deg)] [backface-visibility:hidden]">
+                  <div className="flex items-center justify-center h-full text-[14px] tracking-[1px] text-black poppins">
+                    {item.desc}
+                  </div>
+                </div>
+
+              </div>
+            </div>
+          ))}
+        </div>
+      </div>
+    </>
   );
 }
