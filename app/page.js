@@ -6,7 +6,7 @@ import { useSession } from "next-auth/react";
 const features = [
   {
     title: "Strong Password Generator",
-    desc: `Create complex, secure passwords instantly — because '1234' doesn't cut it anymore.`,
+    desc: `Create complex, secure passwords instantly — because "1234" doesn't cut it anymore.`,
   },
   {
     title: "Add Notes for Context",
@@ -51,7 +51,7 @@ export default function Page() {
             Vaultify keeps your passwords safe, simple, and always within reach.
           </span>
           <span>
-            Because remembering everything shouldn't be risky — it should be
+            Because remembering everything shouldn&apos;t be risky — it should be
             effortless.
           </span>
         </div>

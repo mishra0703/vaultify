@@ -278,7 +278,7 @@ const DeleteConfirmationModal = ({ isOpen, itemUrl, onConfirm, onCancel }) => {
                   transition={{ delay: 0.4 }}
                   className="text-gray-700 mb-5 text-base leading-relaxed"
                 >
-                  This will permanently remove your password entry. You won't be
+                  This will permanently remove your password entry. You won&apos;t be
                   able to recover it.
                 </motion.p>
 
